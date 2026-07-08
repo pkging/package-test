@@ -2,33 +2,41 @@ name: Build package-test
 
 on:
   push:
-    branches: [ main ]
+    branches: [ '**' ]
+    tags:
+      - '*'
   pull_request:
   workflow_dispatch:
+    inputs:
+      run_upload:
+        description: "Also run the Pulp upload job"
+        required: false
+        type: boolean
+        default: false
+      rpm_repository:
+        description: "Target Pulp RPM repository for manual tests"
+        required: false
+        type: string
+        default: "ci-rpm-test"
+      deb_repository:
+        description: "Target Pulp DEB repository for manual tests"
+        required: false
+        type: string
+        default: "ci-deb-test"
 
 jobs:
-  expand-matrix:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Expand matrix
-        id: expand
-        uses: ./.github/actions/expand-matrix
-        with:
-          matrix: |
-            el9: x86_64
-            debian12: x86_64
-            ubuntu24: x86_64
-
-    outputs:
-      matrix: ${{ steps.expand.outputs.matrix }}
-
   build:
-    needs: expand-matrix
-    uses: lbetz/ci-workflows/.github/workflows/build.yml@main
+    uses: lbetz/ci-workflows/.github/workflows/package.yml@main
     with:
       ci_workflows_ref: "main"
-      matrix: ${{ needs.expand-matrix.outputs.matrix }}
+      source_event_name: ${{ github.event_name }}
+      source_ref_name: ${{ github.ref_name }}
+      source_ref_type: ${{ github.ref_type }}
+      run_upload: ${{ github.event_name == 'workflow_dispatch' && inputs.run_upload || false }}
+      rpm_repository: ${{ github.event_name == 'workflow_dispatch' && inputs.rpm_repository || 'ci-rpm' }}
+      deb_repository: ${{ github.event_name == 'workflow_dispatch' && inputs.deb_repository || 'ci-deb' }}
+      matrix: |
+        el9: x86_64
+        debian12: x86_64
+        ubuntu24: x86_64
+    secrets: inherit
