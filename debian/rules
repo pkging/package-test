@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+export DH_VERBOSE = 1
+export DEST=$$(pwd)/debian/ci-workflow-package-test
+
+override_dh_auto_install:
+	mkdir -p ${DEST}/usr/bin
+	install -m755 ci-workflow-package-test ${DEST}/usr/bin/ci-workflow-package-test
+
+%:
+	dh $@

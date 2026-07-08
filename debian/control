@@ -1,0 +1,13 @@
+Source: ci-workflow-package-test
+Section: misc
+Priority: optional
+Maintainer: Lennart Betz <lbetz@prefork.de>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://github.com/lbetz/package-test-upstream
+
+Package: ci-workflow-package-test
+Architecture: all
+Depends: ${misc:Depends}, perl
+Description: Test package for reusable ci-workflows pipeline
+ Small test package used to validate ci-workflows RPM and DEB pipelines.

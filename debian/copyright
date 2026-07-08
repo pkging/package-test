@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: package-test-upstream
+Source: https://github.com/lbetz/package-test-upstream
+
+Files: *
+Copyright: 2016-2026 Lennart Betz
+License: GPL-2.0+
+ GPL version 2 or later.
