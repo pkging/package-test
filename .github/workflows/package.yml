@@ -35,6 +35,7 @@ jobs:
       run_upload: ${{ github.event_name == 'workflow_dispatch' && inputs.run_upload || false }}
       rpm_repository: ${{ github.event_name == 'workflow_dispatch' && inputs.rpm_repository || 'ci-rpm' }}
       deb_repository: ${{ github.event_name == 'workflow_dispatch' && inputs.deb_repository || 'ci-deb' }}
+      sign_packages: false
       matrix: |
         el9: x86_64
         debian12: x86_64
