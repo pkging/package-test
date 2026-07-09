@@ -29,6 +29,7 @@ jobs:
     uses: lbetz/ci-workflows/.github/workflows/package.yml@main
     with:
       ci_workflows_ref: "main"
+      runner_labels: '["self-hosted","homelab"]'
       source_event_name: ${{ github.event_name }}
       source_ref_name: ${{ github.ref_name }}
       source_ref_type: ${{ github.ref_type }}
