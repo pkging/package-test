@@ -14,6 +14,7 @@ The complete package pipeline, including tag-gating, matrix expansion, build, te
 The Pulp upload job runs only on tag pushes that match `semver-<text>`, for example `1.0.0-main` or `2.7.4-rc2`.
 For manual testing, you can use workflow_dispatch with run_upload=true.
 Manual runs default to ci-rpm-test and ci-deb-test so production repos stay untouched.
+Debian-based builds get a distro-specific version suffix during CI so `debian12` and `ubuntu24` uploads can coexist in the same test repository.
 
 ## What It Builds
 
