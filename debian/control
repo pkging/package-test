@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Lennart Betz <lbetz@prefork.de>
 Build-Depends: debhelper (>= 11)
 Standards-Version: 4.1.3
-Homepage: https://github.com/lbetz/package-test-upstream
+Homepage: https://github.com/pkging/package-test-upstream
 
 Package: ci-workflow-package-test
 Architecture: all
