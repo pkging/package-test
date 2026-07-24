@@ -5,8 +5,8 @@ Version:        1.0.0
 Release:        1%{?dist}
 Summary:        Test package for reusable ci-workflows pipeline
 License:        GPL-2.0+
-URL:            https://github.com/pkging/package-test-upstream
-Source0:        https://github.com/pkging/package-test-upstream/archive/refs/tags/v%{version}.tar.gz
+URL:            https://github.com/lbetz/package-test-upstream
+Source0:        https://github.com/lbetz/package-test-upstream/archive/refs/tags/v%{version}.tar.gz
 BuildArch:      noarch
 
 %description
