@@ -13,16 +13,6 @@ on:
         required: false
         type: boolean
         default: false
-      rpm_repository:
-        description: "Target Pulp RPM repository for manual tests"
-        required: false
-        type: string
-        default: "ci-rpm-test"
-      deb_repository:
-        description: "Target Pulp DEB repository for manual tests"
-        required: false
-        type: string
-        default: "ci-deb-test"
 
 jobs:
   build:
@@ -34,8 +24,6 @@ jobs:
       source_ref_name: ${{ github.ref_name }}
       source_ref_type: ${{ github.ref_type }}
       run_upload: ${{ github.event_name == 'workflow_dispatch' && inputs.run_upload || false }}
-      rpm_repository: ${{ github.event_name == 'workflow_dispatch' && inputs.rpm_repository || 'ci-rpm' }}
-      deb_repository: ${{ github.event_name == 'workflow_dispatch' && inputs.deb_repository || 'ci-deb' }}
       sign_packages: true
       matrix: |
         el9: x86_64
